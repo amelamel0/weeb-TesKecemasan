@@ -5,28 +5,24 @@ document.getElementById('depression-test-form').addEventListener('submit', funct
     let score = 0;
 
     // Menghitung nilai berdasarkan pilihan
-    for (let i = 0; i < 4; i++) {
-        const questionName = 'question' + (i + 1);
-        const selectedAnswer = formElements[questionName] ? formElements[questionName].value : null;
+    for (let i = 1; i <= 20; i++) { // Menggunakan 1 sampai 20 untuk 20 pertanyaan
+        const selectedAnswer = formElements[`q${i}`]; // Mendapatkan elemen berdasarkan name 'q1', 'q2', ... 'q20'
 
-        // Validasi: pastikan ada jawaban yang dipilih untuk setiap pertanyaan
-        if (selectedAnswer === null || selectedAnswer === '') {
-            alert(`Harap jawab pertanyaan ${i + 1}.`);
-            return; // Menghentikan proses jika ada jawaban yang kosong
+        if (selectedAnswer) {
+            // Pastikan ada jawaban yang dipilih
+            for (let j = 0; j < selectedAnswer.length; j++) {
+                if (selectedAnswer[j].checked) {
+                    // Menambahkan nilai berdasarkan pilihan yang dipilih
+                    const value = selectedAnswer[j].value;
+                    if (value === 'Selalu') score += 4;
+                    else if (value === 'Sering') score += 3;
+                    else if (value === 'Kadang-kadang') score += 2;
+                    else if (value === 'Tidak Pernah') score += 1;
+                    break; // Keluar setelah menemukan pilihan yang dipilih
+                }
+            }
         }
-
-        // Parsing nilai jawaban menjadi integer
-        const answerValue = parseInt(selectedAnswer);
-
-        // Validasi: pastikan jawaban adalah angka yang valid
-        if (isNaN(answerValue)) {
-            alert(`Jawaban pertanyaan ${i + 1} tidak valid.`);
-            return;
-        }
-
-        score += answerValue;
     }
-
     // Menentukan hasil berdasarkan skor
     let resultMessage = '';
     if (score <= 6) {

@@ -14,10 +14,10 @@ document.getElementById('depression-test-form').addEventListener('submit', funct
                 if (selectedAnswer[j].checked) {
                     // Menambahkan nilai berdasarkan pilihan yang dipilih
                     const value = selectedAnswer[j].value;
-                    if (value === 'Selalu') score += 4;
-                    else if (value === 'Sering') score += 3;
-                    else if (value === 'Kadang-kadang') score += 2;
-                    else if (value === 'Tidak Pernah') score += 1;
+                    if (value === 'Sangat Setuju') score += 4;
+                    else if (value === 'Setuju') score += 3;
+                    else if (value === 'Tidak Setuju') score += 2;
+                    else if (value === 'Sangat Tidak Setuju') score += 1;
                     break; // Keluar setelah menemukan pilihan yang dipilih
                 }
             }

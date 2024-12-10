@@ -14,25 +14,24 @@ document.getElementById('depression-test-form').addEventListener('submit', funct
                 if (selectedAnswer[j].checked) {
                     // Menambahkan nilai berdasarkan pilihan yang dipilih
                     const value = selectedAnswer[j].value;
-                    if (value === 'Sangat Setuju') score += 4;
-                    else if (value === 'Setuju') score += 3;
-                    else if (value === 'Tidak Setuju') score += 2;
-                    else if (value === 'Sangat Tidak Setuju') score += 1;
+                    if (value === 'Selalu') score += 4;
+                    else if (value === 'Sering') score += 3;
+                    else if (value === 'Kadang-kadang') score += 2;
+                    else if (value === 'Tidak Pernah') score += 1;
                     break; // Keluar setelah menemukan pilihan yang dipilih
                 }
             }
         }
     }
-    // Menentukan hasil berdasarkan skor
+
     let resultMessage = '';
     if (score <= 20) {
-        resultMessage = 'Hasil tes menunjukkan bahwa Anda tidak menunjukkan gejala kecemasan yang signifikan. Kecemasan ini adalah respons normal terhadap situasi sehari-hari, seperti menghadapi ujian atau presentasi. Gejalanya termasuk peningkatan kewaspadaan dan perhatian, tetapi individu masih mampu menyelesaikan masalah dengan baik.';
+        resultMessage = 'Hasil tes menunjukkan bahwa Anda tidak menunjukkan gejala kesehatan mental yang signifikan. Gejala kesehatan mental ini seringkali tidak terlalu mengganggu aktivitas sehari-hari, tetapi tetap perlu diperhatikan. Anda bisa mengatasinya dengan belajar meditasi dan melakukan aktivitas fisik rutin.';
     } else if (score <= 40) {
-        resultMessage = 'Hasil tes menunjukkan gejala ringan kecemasan. Kecemasan sedang ditandai dengan penurunan kemampuan dalam memusatkan perhatian dan menyelesaikan tugas. Penderita mungkin merasa mudah tersinggung, tidak sabar, serta mengalami gejala fisik seperti berkeringat atau ketegangan otot.';
+        resultMessage = 'Hasil tes menunjukkan gejala ringan kesehatan mental. Gejala kesehatan mental sedang mulai mempengaruhi kehidupan sosial dan pekerjaan seseorang. Meliputi Gangguan tidur yang lebih serius, perasaan putus asa dan merasa tidak berharga. Anda bisa mengatasinya dengan Perawatan Mandiri Komprehensif seperti mengubah pola hidup. Cobalah berbicara dengan seorang profesional untuk evaluasi lebih lanjut.';
     } else {
-        resultMessage = 'Hasil tes menunjukkan gejala kecemasan yang lebih serius. Kecemasan berat mengganggu fungsi sehari-hari secara signifikan. Individu akan terfokus pada satu hal tertentu, mengalami kesulitan berpikir, menarik diri dari interaksi sosial, dan menunjukkan gejala fisik yang lebih parah seperti gemetar dan perasaan bingung. Sangat disarankan untuk mencari bantuan profesional segera.';
+        resultMessage = 'Hasil tes menunjukkan gejala kesehatan mental yang lebih serius. Kesehatan mental berat ditandai dengan gejala yang sangat mengganggu kehidupan sehari-hari dan memerlukan perhatian medis segera seperti Pikiran untuk menyakiti diri sendiri atau bunuh diri, Halusinasi atau delusi, dan Kecemasan yang parah. Anda bisa mengatasinya dengan Terapi Psikologis. Sangat disarankan untuk mencari bantuan profesional segera.';
     }
 
-    // Menampilkan hasil tes di halaman
     document.getElementById('result').innerHTML = `<h3>Hasil Tes:</h3><p>${resultMessage}</p>`;
 });
